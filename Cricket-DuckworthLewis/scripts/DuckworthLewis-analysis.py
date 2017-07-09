@@ -227,7 +227,7 @@ def plotMonths(df,save=0,fName='test.png'):
     
     names = list(monthCounts.index)
     xVals = np.array(range(len(monthCounts)))
-    plt.bar(xVals, monthCounts/np.sum(monthCounts))
+    plt.bar(xVals, 100.*monthCounts/np.sum(monthCounts))
     plt.xticks(xVals+0.5, names, rotation='vertical')
     if (save):
         plt.savefig("../figures/"+fName)  

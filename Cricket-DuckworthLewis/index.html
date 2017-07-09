@@ -11778,7 +11778,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Duckworth-Lewis-in-limited-overs-cricket-matches">Duckworth-Lewis in limited overs cricket matches<a class="anchor-link" href="#Duckworth-Lewis-in-limited-overs-cricket-matches">&#182;</a></h1><h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>Duckworth-Lewis method (<a href="https://en.wikipedia.org/wiki/Duckworth%E2%80%93Lewis_method">https://en.wikipedia.org/wiki/Duckworth%E2%80%93Lewis_method</a>) is used to calculate the modified target score for the team batting second in a cricket match where some overs are lost due to rain interruption. In this blog, I have done taken a close look at such matches, primarily focusing on location (country) and the time of the year when a match is most likely to get affected by D/L.</p>
+<h1 id="Duckworth-Lewis-in-limited-overs-cricket-matches">Duckworth-Lewis in limited overs cricket matches<a class="anchor-link" href="#Duckworth-Lewis-in-limited-overs-cricket-matches">&#182;</a></h1><h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>Duckworth-Lewis method (<a href="https://en.wikipedia.org/wiki/Duckworth%E2%80%93Lewis_method">https://en.wikipedia.org/wiki/Duckworth%E2%80%93Lewis_method</a>) is used to calculate the modified target score for the team batting second in a cricket match where some overs are lost due to rain interruption. In this blog, I have taken a close look at such matches, primarily focusing on location (country) and the time of the year when a match is most likely to get affected by D/L.</p>
 <p>The data is available on espncricinfo.com. Scraping the website and converting the data into csv format was done by Gaurav Sood (<a href="https://github.com/soodoku/get-cricket-data">https://github.com/soodoku/get-cricket-data</a>) and Derek Willis (<a href="https://github.com/dwillis/toss-up">https://github.com/dwillis/toss-up</a>). I used the two csv files published by these authors on their respective github repositories, where they did an excellent review of the effect of toss in a cricket match (including the effect of toss on D/L affected matches).</p>
 
 </div>
@@ -11822,7 +11822,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">mergeGrounds</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">grounds</span><span class="p">):</span>
@@ -11904,7 +11904,7 @@ Clearly, day &amp; night games are affected more by D/L</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">chained_assignment</span> <span class="o">=</span> <span class="bp">None</span>
@@ -11953,7 +11953,7 @@ Clearly, day &amp; night games are affected more by D/L</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">totalCountries</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">allMerged</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
@@ -11984,7 +11984,7 @@ Clearly, day &amp; night games are affected more by D/L</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -12035,7 +12035,7 @@ Clearly, day &amp; night games are affected more by D/L</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">limitedDat</span> <span class="o">=</span> <span class="n">dat</span><span class="p">[(</span><span class="n">dat</span><span class="p">[</span><span class="s1">&#39; type_of_match&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;TEST&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dat</span><span class="p">[</span><span class="s1">&#39; type_of_match&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;FC&#39;</span><span class="p">)]</span>
@@ -12061,7 +12061,7 @@ Clearly, day &amp; night games are affected more by D/L</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">plotCountriesPerc</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">dfRef</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fName</span> <span class="o">=</span> <span class="s2">&quot;test.png&quot;</span><span class="p">):</span>
@@ -12114,7 +12114,7 @@ Clearly, day &amp; night games are affected more by D/L</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">countries</span> <span class="o">=</span> <span class="n">limMerged</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -12135,15 +12135,6 @@ Clearly, day &amp; night games are affected more by D/L</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="./figures/07-DL-topCountries-percentage.png" alt="title"></p>
 <p>We see games in Sri Lanka has the highest probability of being affected by D/L.</p>
 <p>Since D/L is directly linked to the weather, there might be a correlation between the time of the year when the match is being played and the probability of the match being affected by D/L. Let us look at that.</p>
@@ -12153,7 +12144,7 @@ Clearly, day &amp; night games are affected more by D/L</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">plotMonths</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">save</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">fName</span><span class="o">=</span><span class="s1">&#39;test.png&#39;</span><span class="p">):</span>
@@ -12168,8 +12159,9 @@ Clearly, day &amp; night games are affected more by D/L</p>
     
     <span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">monthCounts</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
     <span class="n">xVals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">monthCounts</span><span class="p">)))</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">xVals</span><span class="p">,</span> <span class="n">monthCounts</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">monthCounts</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">xVals</span><span class="p">,</span> <span class="mf">100.</span><span class="o">*</span><span class="n">monthCounts</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">monthCounts</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">xVals</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">% o</span><span class="s2">f games affected by D/L&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">save</span><span class="p">):</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;./figures/&quot;</span><span class="o">+</span><span class="n">fName</span><span class="p">)</span>  
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -12196,7 +12188,7 @@ Clearly, day &amp; night games are affected more by D/L</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">Months</span> <span class="o">=</span> <span class="n">allMerged</span><span class="p">[</span><span class="s1">&#39; date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">()[:,</span><span class="mi">0</span><span class="p">]</span>
@@ -12229,7 +12221,7 @@ That is  99.56 % of total matches
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
@@ -12279,23 +12271,6 @@ That is  99.56 % of total matches
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/usr/lib/pymodules/python2.7/matplotlib/collections.py:548: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
-  if self._edgecolors == &#39;face&#39;:
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -12307,6 +12282,19 @@ That is  99.56 % of total matches
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
