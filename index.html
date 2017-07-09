@@ -11893,7 +11893,7 @@ Clearly, day &amp; night games are affected more by D/L.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">totalCountries</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">allMerged</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
@@ -11924,7 +11924,7 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -11975,7 +11975,7 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">limitedDat</span> <span class="o">=</span> <span class="n">dat</span><span class="p">[(</span><span class="n">dat</span><span class="p">[</span><span class="s1">&#39; type_of_match&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;TEST&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dat</span><span class="p">[</span><span class="s1">&#39; type_of_match&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;FC&#39;</span><span class="p">)]</span>
@@ -12001,7 +12001,7 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">plotCountriesPerc</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">dfRef</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fName</span> <span class="o">=</span> <span class="s2">&quot;test.png&quot;</span><span class="p">):</span>
@@ -12054,7 +12054,7 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">countries</span> <span class="o">=</span> <span class="n">limMerged</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -12092,7 +12092,7 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">plotMonths</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">save</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">fName</span><span class="o">=</span><span class="s1">&#39;test.png&#39;</span><span class="p">):</span>
@@ -12135,7 +12135,7 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">Months</span> <span class="o">=</span> <span class="n">allMerged</span><span class="p">[</span><span class="s1">&#39; date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">()[:,</span><span class="mi">0</span><span class="p">]</span>
@@ -12168,7 +12168,7 @@ That is  99.564810482 % of total matches
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
@@ -12233,7 +12233,7 @@ That is  99.564810482 % of total matches
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">BatFirstResult</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
@@ -12268,22 +12268,6 @@ That is  99.564810482 % of total matches
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>45.3551912568 38.6593355171
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -12295,6 +12279,19 @@ That is  99.564810482 % of total matches
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
