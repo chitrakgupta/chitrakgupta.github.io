@@ -11778,7 +11778,18 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>First I read the final output data into a pandas data frame and select the matches which were affected by D/L. Then I read the grounds data into another pandas data frame.</p>
+<h1 id="Duckworth-Lewis-in-limited-overs-cricket-matches">Duckworth-Lewis in limited overs cricket matches<a class="anchor-link" href="#Duckworth-Lewis-in-limited-overs-cricket-matches">&#182;</a></h1><h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>Duckworth-Lewis method (<a href="https://en.wikipedia.org/wiki/Duckworth%E2%80%93Lewis_method">https://en.wikipedia.org/wiki/Duckworth%E2%80%93Lewis_method</a>) is used to calculate the modified target score for the team batting second in a cricket match where some overs are lost due to rain interruption. In this blog, I have done taken a close look at such matches, primarily focusing on location (country) and the time of the year when a match is most likely to get affected by D/L.</p>
+<p>The data is available on espncricinfo.com. Scraping the website and converting the data into csv format was done by Gaurav Sood (<a href="https://github.com/soodoku/get-cricket-data">https://github.com/soodoku/get-cricket-data</a>) and Derek Willis (<a href="https://github.com/dwillis/toss-up">https://github.com/dwillis/toss-up</a>). I used the two csv files published by these authors on their respective github repositories, where they did an excellent review of the effect of toss in a cricket match (including the effect of toss on D/L affected matches).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data-preparation">Data preparation<a class="anchor-link" href="#Data-preparation">&#182;</a></h2><p>First I read the final output data into a pandas data frame and select the matches which were affected by D/L. Then I read the grounds data into another pandas data frame.</p>
 
 </div>
 </div>
@@ -11811,7 +11822,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">mergeGrounds</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">grounds</span><span class="p">):</span>
@@ -11824,7 +11835,7 @@ div#notebook {
 <span class="n">allMerged</span> <span class="o">=</span> <span class="n">mergeGrounds</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">groundsDat</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="s2">&quot;Out of &quot;</span><span class="p">,</span> <span class="n">dat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot; games, &quot;</span><span class="p">,</span> <span class="n">allMerged</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot; are being retained&quot;</span>
-<span class="k">print</span> <span class="s2">&quot;That is &quot;</span><span class="p">,</span> <span class="n">allMerged</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mf">100.</span><span class="o">/</span><span class="n">dat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;</span><span class="si">% o</span><span class="s2">f total matches&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;That is &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">allMerged</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mf">100.</span><span class="o">/</span><span class="n">dat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">&quot;</span><span class="si">% o</span><span class="s2">f total matches&quot;</span>
 </pre></div>
 
 </div>
@@ -11840,7 +11851,7 @@ div#notebook {
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Out of  43185  games,  42740  are being retained
-That is  98.9695496121 % of total matches
+That is  98.97 % of total matches
 </pre>
 </div>
 </div>
@@ -11854,7 +11865,7 @@ That is  98.9695496121 % of total matches
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The first question I asked is, are day/night games affected by D/L more than day games?</p>
+<h2 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h2><p>The first question I asked is, are day/night games affected by D/L more than day games?</p>
 
 </div>
 </div>
@@ -11885,15 +11896,64 @@ That is  98.9695496121 % of total matches
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="./figures/01-DL-DN.png" alt="title">
-Clearly, day &amp; night games are affected more by D/L.</p>
-<p>The next question I ask is, does D/L affect matches at all locations (countries)?</p>
+Clearly, day &amp; night games are affected more by D/L</p>
+<p>Next, I ask whether there is an advantage to the side batting first in a game affected by D/L. Typically, the target asking rate (runs per over) set for the chasing team in a D/L game is higher than that achieved by the team batting first. This raises the question as to whether the percentage of games won by the team batting first changes significantly in a D/L affected match.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">chained_assignment</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="k">def</span> <span class="nf">BatFirstResult</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">TossChoiceResult</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39; team1&#39;</span><span class="p">,</span> <span class="s1">&#39; team2&#39;</span><span class="p">,</span> <span class="s1">&#39; win_toss&#39;</span><span class="p">,</span> <span class="s1">&#39; bat_or_bowl&#39;</span><span class="p">,</span> <span class="s1">&#39; win_game&#39;</span><span class="p">,</span> <span class="s1">&#39; type_of_match&#39;</span><span class="p">]]</span>
+    <span class="n">batFirst</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">TossChoiceResult</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39; bat_or_bowl&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;bat&#39;</span><span class="p">):</span>
+            <span class="n">batFirst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39; win_toss&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39; win_toss&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39; team1&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]):</span>
+                <span class="n">batFirst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39; team2&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">batFirst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39; team1&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+            
+    <span class="n">TossChoiceResult</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;bat_first&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">batFirst</span><span class="p">)</span>
+    <span class="n">batFirstWin</span> <span class="o">=</span> <span class="n">TossChoiceResult</span><span class="p">[</span><span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39; win_game&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39;bat_first&#39;</span><span class="p">]]</span>
+    
+    <span class="k">return</span> <span class="n">batFirstWin</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39; win_game&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39;bat_first&#39;</span><span class="p">])</span><span class="o">*</span><span class="mf">100.</span><span class="o">/</span><span class="n">TossChoiceResult</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">DLresult</span><span class="p">,</span> <span class="n">DLresultCount</span> <span class="o">=</span> <span class="n">BatFirstResult</span><span class="p">(</span><span class="n">DLmerged</span><span class="p">)</span>
+<span class="n">allResult</span><span class="p">,</span> <span class="n">allResultCount</span> <span class="o">=</span> <span class="n">BatFirstResult</span><span class="p">(</span><span class="n">allMerged</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">),[</span><span class="n">allResultCount</span><span class="p">,</span> <span class="n">DLresultCount</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;All&quot;</span><span class="p">,</span> <span class="s2">&quot;D/L affected&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">% o</span><span class="s2">f games won by team batting first&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;figures/02-DL-battingFirst.png&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./figures/02-DL-battingFirst.png" alt="title"></p>
+<p>We see there is in fact a very little difference (38.66% in all games vs. 45.35% in D/L games).</p>
+<p>Now I focus on how the location affects the likelihood of a match being affected by D/L. Does D/L come into play at all locations (countries)?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">totalCountries</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">allMerged</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
@@ -11901,7 +11961,7 @@ Clearly, day &amp; night games are affected more by D/L.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">),[</span><span class="n">totalCountries</span><span class="p">,</span> <span class="n">DLcountries</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;All&quot;</span><span class="p">,</span> <span class="s2">&quot;D/L affected&quot;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Number of countries&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;figures/02-DL-countries.png&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;figures/03-DL-countries.png&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </pre></div>
 
@@ -11915,16 +11975,16 @@ Clearly, day &amp; night games are affected more by D/L.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./figures/02-DL-countries.png" alt="title">
-We see that out of 41 countries where cricket is played in, only 24 has had matches affected by D/L so far.</p>
-<p>Next, I looked at how does location (country) affect the number of matches that gets affected by D/L?</p>
+<p><img src="./figures/03-DL-countries.png" alt="title"></p>
+<p>We see that out of 41 countries where cricket is played in, only 24 has had matches affected by D/L so far.</p>
+<p>Next, I looked at how the location (country) affects the number of matches that gets affected by D/L.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -11953,7 +12013,7 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
         <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;figures/&quot;</span><span class="o">+</span><span class="n">fName</span><span class="p">)</span> 
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="n">plotCountries</span><span class="p">(</span><span class="n">DLmerged</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fName</span><span class="o">=</span><span class="s2">&quot;03-DL-all-countries.png&quot;</span><span class="p">)</span>
+<span class="n">plotCountries</span><span class="p">(</span><span class="n">DLmerged</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fName</span><span class="o">=</span><span class="s2">&quot;04-DL-all-countries.png&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11966,7 +12026,7 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./figures/03-DL-all-countries.png" alt="title"></p>
+<p><img src="./figures/04-DL-all-countries.png" alt="title"></p>
 <p>At first look, it appears that England has the highest instances of matches being affected by D/L. However, this might simply be due to more number of matches being played in England. In other words, highest instances need not mean highest probability.</p>
 <p>So we need to look at the number of matches played per country. Since D/L comes into play only in limited over games, we choose only to focus on the four categories, namely, "ODI", "LISTA", "T20I" and "T20", and leave out "TEST" and "FC".</p>
 
@@ -11975,12 +12035,12 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">limitedDat</span> <span class="o">=</span> <span class="n">dat</span><span class="p">[(</span><span class="n">dat</span><span class="p">[</span><span class="s1">&#39; type_of_match&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;TEST&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dat</span><span class="p">[</span><span class="s1">&#39; type_of_match&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;FC&#39;</span><span class="p">)]</span>
 <span class="n">limMerged</span> <span class="o">=</span> <span class="n">mergeGrounds</span><span class="p">(</span><span class="n">limitedDat</span><span class="p">,</span> <span class="n">groundsDat</span><span class="p">)</span>
-<span class="n">plotCountries</span><span class="p">(</span><span class="n">limMerged</span><span class="p">,</span><span class="n">save</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fName</span><span class="o">=</span><span class="s2">&quot;04-All-countries.png&quot;</span><span class="p">)</span>
+<span class="n">plotCountries</span><span class="p">(</span><span class="n">limMerged</span><span class="p">,</span><span class="n">save</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fName</span><span class="o">=</span><span class="s2">&quot;05-All-countries.png&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11993,7 +12053,7 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./figures/04-All-countries.png" alt="title"></p>
+<p><img src="./figures/05-All-countries.png" alt="title"></p>
 <p>We see that the hunch was right. The higher occurrence of D/L affected matches in England was simply due to the higher number of matches being played in England. We need to look at the percentage of matches being affected by D/L instead of the number of them.</p>
 
 </div>
@@ -12001,7 +12061,7 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">plotCountriesPerc</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">dfRef</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fName</span> <span class="o">=</span> <span class="s2">&quot;test.png&quot;</span><span class="p">):</span>
@@ -12033,7 +12093,7 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="n">limMergedCountries</span> <span class="o">=</span> <span class="n">limMerged</span><span class="p">[</span><span class="n">limMerged</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">DLmerged</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">])]</span>
-<span class="n">plotCountriesPerc</span><span class="p">(</span><span class="n">DLmerged</span><span class="p">,</span><span class="n">limMergedCountries</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fName</span><span class="o">=</span><span class="s1">&#39;05-DL-countries-percentage.png&#39;</span><span class="p">)</span>
+<span class="n">plotCountriesPerc</span><span class="p">(</span><span class="n">DLmerged</span><span class="p">,</span><span class="n">limMergedCountries</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fName</span><span class="o">=</span><span class="s1">&#39;06-DL-countries-percentage.png&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12046,7 +12106,7 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./figures/05-DL-countries-percentage.png" alt="title"></p>
+<p><img src="./figures/06-DL-countries-percentage.png" alt="title"></p>
 <p>Now we see a totally different picture. At this point, let us focus on the countries where most games are played. Let us choose 1000 games as an arbitrary cut-off for the countries we want to include in the analysis.</p>
 
 </div>
@@ -12054,7 +12114,7 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">countries</span> <span class="o">=</span> <span class="n">limMerged</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -12062,7 +12122,7 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
 <span class="n">topCountries</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">countries</span><span class="p">[</span><span class="n">countries</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 <span class="n">topMergedCountries</span> <span class="o">=</span> <span class="n">limMerged</span><span class="p">[</span><span class="n">limMerged</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">topCountries</span><span class="p">)]</span>
 <span class="n">topDLcountries</span> <span class="o">=</span> <span class="n">DLmerged</span><span class="p">[</span><span class="n">DLmerged</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">topMergedCountries</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">])]</span>
-<span class="n">plotCountriesPerc</span><span class="p">(</span><span class="n">topDLcountries</span><span class="p">,</span> <span class="n">topMergedCountries</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fName</span><span class="o">=</span><span class="s1">&#39;06-DL-topCountries-percentage.png&#39;</span><span class="p">)</span>
+<span class="n">plotCountriesPerc</span><span class="p">(</span><span class="n">topDLcountries</span><span class="p">,</span> <span class="n">topMergedCountries</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fName</span><span class="o">=</span><span class="s1">&#39;07-DL-topCountries-percentage.png&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12084,15 +12144,16 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./figures/06-DL-topCountries-percentage.png" alt="title"></p>
-<p>The next question I ask is, is there a correlation between the time of the year when the match is being played and the probability of the match being affected by D/L?</p>
+<p><img src="./figures/07-DL-topCountries-percentage.png" alt="title"></p>
+<p>We see games in Sri Lanka has the highest probability of being affected by D/L.</p>
+<p>Since D/L is directly linked to the weather, there might be a correlation between the time of the year when the match is being played and the probability of the match being affected by D/L. Let us look at that.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">plotMonths</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">save</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">fName</span><span class="o">=</span><span class="s1">&#39;test.png&#39;</span><span class="p">):</span>
@@ -12113,7 +12174,7 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
         <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;./figures/&quot;</span><span class="o">+</span><span class="n">fName</span><span class="p">)</span>  
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     
-<span class="n">plotMonths</span><span class="p">(</span><span class="n">topDLcountries</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fName</span><span class="o">=</span><span class="s2">&quot;07-DuckworthLewis-top-months.png&quot;</span><span class="p">)</span>
+<span class="n">plotMonths</span><span class="p">(</span><span class="n">topDLcountries</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fName</span><span class="o">=</span><span class="s2">&quot;08-DuckworthLewis-top-months.png&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12126,7 +12187,7 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./figures/07-DuckworthLewis-top-months.png" alt="title"></p>
+<p><img src="./figures/08-DuckworthLewis-top-months.png" alt="title"></p>
 <p>We don't see a lot of pattern, but maybe time of the year would be related to the country. Different countries get rain at different times of the year.</p>
 <p>But before proceeding to that, let us verify that we didn't throw out too many matches which had incorrectly formatted date.</p>
 
@@ -12135,13 +12196,13 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">Months</span> <span class="o">=</span> <span class="n">allMerged</span><span class="p">[</span><span class="s1">&#39; date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">()[:,</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">monthCounts</span> <span class="o">=</span> <span class="n">Months</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="k">print</span> <span class="s2">&quot;Out of &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">monthCounts</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot; matches, month information of &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">monthCounts</span><span class="p">)[</span><span class="mi">11</span><span class="p">],</span> <span class="s2">&quot;has been accounted for&quot;</span>
-<span class="k">print</span> <span class="s2">&quot;That is &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">monthCounts</span><span class="p">)[</span><span class="mi">11</span><span class="p">]</span><span class="o">*</span><span class="mf">100.</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">monthCounts</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;</span><span class="si">% o</span><span class="s2">f total matches&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;That is &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">monthCounts</span><span class="p">)[</span><span class="mi">11</span><span class="p">]</span><span class="o">*</span><span class="mf">100.</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">monthCounts</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="s2">&quot;</span><span class="si">% o</span><span class="s2">f total matches&quot;</span>
 </pre></div>
 
 </div>
@@ -12157,7 +12218,7 @@ We see that out of 41 countries where cricket is played in, only 24 has had matc
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Out of  42740  matches, month information of  42554 has been accounted for
-That is  99.564810482 % of total matches
+That is  99.56 % of total matches
 </pre>
 </div>
 </div>
@@ -12168,7 +12229,7 @@ That is  99.564810482 % of total matches
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
@@ -12211,10 +12272,27 @@ That is  99.564810482 % of total matches
         <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;./figures/&quot;</span><span class="o">+</span><span class="n">fName</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     
-<span class="n">plotCountriesAndMonthsPerc</span><span class="p">(</span><span class="n">topDLcountries</span><span class="p">,</span> <span class="n">topMergedCountries</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fName</span><span class="o">=</span><span class="s2">&quot;08-CountriesAndMonths.png&quot;</span><span class="p">)</span>
+<span class="n">plotCountriesAndMonthsPerc</span><span class="p">(</span><span class="n">topDLcountries</span><span class="p">,</span> <span class="n">topMergedCountries</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fName</span><span class="o">=</span><span class="s2">&quot;09-CountriesAndMonths.png&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/usr/lib/pymodules/python2.7/matplotlib/collections.py:548: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+  if self._edgecolors == &#39;face&#39;:
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -12224,72 +12302,11 @@ That is  99.564810482 % of total matches
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./figures/08-CountriesAndMonths.png" alt="title"></p>
-<p>We see that the biggest probability of D/L coming into play is in matches played in India in August and in New Zealand in September, followed by those played in New Zealand (November), Bangladesh (Jun and September), Sri Lanka (December) and West Indies (July).</p>
-<p>Finally, I ask whether there is an advantage to the side batting first in a game affected by D/L. Typically, the target asking rate (runs per over) set for the chasing team in a D/L game is higher than that achieved by the team batting first. This raises the question as to whether the percentage of games won by the team batting first changes significantly in a D/L affected match.</p>
+<p><img src="./figures/09-CountriesAndMonths.png" alt="title"></p>
+<p>We see that the highest probability of D/L coming into play is in matches played in India in August and in New Zealand in September, followed by those played in New Zealand (November), Bangladesh (Jun and September), Sri Lanka (December) and West Indies (July).</p>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">BatFirstResult</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-    <span class="n">TossChoiceResult</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39; team1&#39;</span><span class="p">,</span> <span class="s1">&#39; team2&#39;</span><span class="p">,</span> <span class="s1">&#39; win_toss&#39;</span><span class="p">,</span> <span class="s1">&#39; bat_or_bowl&#39;</span><span class="p">,</span> <span class="s1">&#39; win_game&#39;</span><span class="p">,</span> <span class="s1">&#39; type_of_match&#39;</span><span class="p">]]</span>
-    <span class="n">batFirst</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">TossChoiceResult</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39; bat_or_bowl&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;bat&#39;</span><span class="p">):</span>
-            <span class="n">batFirst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39; win_toss&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39; win_toss&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39; team1&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]):</span>
-                <span class="n">batFirst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39; team2&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">batFirst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39; team1&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
-            
-    <span class="n">TossChoiceResult</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;bat_first&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">batFirst</span><span class="p">)</span>
-    <span class="n">batFirstWin</span> <span class="o">=</span> <span class="n">TossChoiceResult</span><span class="p">[</span><span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39; win_game&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39;bat_first&#39;</span><span class="p">]]</span>
-    
-    <span class="k">return</span> <span class="n">batFirstWin</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39; win_game&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">TossChoiceResult</span><span class="p">[</span><span class="s1">&#39;bat_first&#39;</span><span class="p">])</span><span class="o">*</span><span class="mf">100.</span><span class="o">/</span><span class="n">TossChoiceResult</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="n">DLresult</span><span class="p">,</span> <span class="n">DLresultCount</span> <span class="o">=</span> <span class="n">BatFirstResult</span><span class="p">(</span><span class="n">DLmerged</span><span class="p">)</span>
-<span class="n">allResult</span><span class="p">,</span> <span class="n">allResultCount</span> <span class="o">=</span> <span class="n">BatFirstResult</span><span class="p">(</span><span class="n">allMerged</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">),[</span><span class="n">allResultCount</span><span class="p">,</span> <span class="n">DLresultCount</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;All&quot;</span><span class="p">,</span> <span class="s2">&quot;D/L affected&quot;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">% o</span><span class="s2">f games won by team batting first&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;./figures/09-DL-battingFirst.png&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="./figures/09-DL-battingFirst.png" alt="title"></p>
-<p>We see there is in fact a very little difference (38.66% in all games vs. 45.35% in D/L games).</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
     </div>
   </div>
