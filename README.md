@@ -4,7 +4,7 @@
 
 # About me
 
-<img src="./Chitrak_blogpic.jpg" align="left" height="200" width="200" style="display:inline;margin-right:20px;"/>
+<img src="./Chitrak_blogpic.jpg" align="left" height="200" width="200" style="display:inline;margin-right:20px; margin-bottom:20px;"/>
 
 I am a PhD candidate at the Bennett Department of Chemistry at West Virginia University (2014-present). I use computational biophysics to understand what we believe would become a next generation cancer diagnostic and therapeutic agent. [Here](http://www.mertzlab-biophysics.com) is a link to our research group led by Dr. Blake Mertz.
 
