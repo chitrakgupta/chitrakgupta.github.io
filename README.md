@@ -1,5 +1,5 @@
 
-[Home](https://chitrakgupta.github.io) &nbsp;&nbsp;&nbsp;&nbsp; [LinkedIn](https://www.linkedin.com/in/chitrak-gupta-5474b9115/) &nbsp;&nbsp;&nbsp;&nbsp; [Mertz Lab](www.mertzlab-biophysics.com) &nbsp;&nbsp;&nbsp;&nbsp; [BPS blog](https://biophysicalsociety.wordpress.com/author/chgupta/)
+[Home](https://chitrakgupta.github.io) &nbsp;&nbsp;&nbsp;&nbsp; [LinkedIn](https://www.linkedin.com/in/chitrak-gupta-5474b9115/) &nbsp;&nbsp;&nbsp;&nbsp; [Mertz Lab](http://www.mertzlab-biophysics.com) &nbsp;&nbsp;&nbsp;&nbsp; [BPS blog](https://biophysicalsociety.wordpress.com/author/chgupta/)
 
 
 # About me
@@ -19,3 +19,8 @@ Apart from posts on this page, I have been a guest blogger for Biophysical Socie
 In this blog, I have uploaded some of the analysis that I have performed on publicly available data sets.
 
 [Cricket matches affected by Duckworth-Lewis](https://chitrakgupta.github.io/Cricket-DuckworthLewis/).
+
+
+```python
+
+```
