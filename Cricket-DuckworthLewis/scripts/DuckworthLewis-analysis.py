@@ -4,17 +4,18 @@
 # # Duckworth-Lewis in limited overs cricket matches
 # 
 # ## Introduction
-# Duckworth-Lewis method (https://en.wikipedia.org/wiki/Duckworth%E2%80%93Lewis_method) is used to calculate the modified target score for the team batting second in a cricket match where some overs are lost due to rain interruption. In this blog, I have done taken a close look at such matches, primarily focusing on location (country) and the time of the year when a match is most likely to get affected by D/L.
+# [Duckworth-Lewis method](https://en.wikipedia.org/wiki/Duckworth%E2%80%93Lewis_method) is used to calculate the modified target score for the team batting second in a cricket match where some overs are lost due to rain interruption. In this blog, I have taken a close look at such matches, primarily focusing on location (country) and the time of the year when a match is most likely to get affected by D/L.
 # 
-# The data is available on espncricinfo.com. Scraping the website and converting the data into csv format was done by Gaurav Sood (https://github.com/soodoku/get-cricket-data) and Derek Willis (https://github.com/dwillis/toss-up). I used the two csv files published by these authors on their respective github repositories, where they did an excellent review of the effect of toss in a cricket match (including the effect of toss on D/L affected matches).
+# The data is available on espncricinfo.com. Scraping the website and converting the data into csv format was done by [Gaurav Sood](https://github.com/soodoku/get-cricket-data) and [Derek Willis](https://github.com/dwillis/toss-up). I used the two csv files published by these authors on their respective github repositories, where they did an excellent review of the effect of toss in a cricket match (including the effect of toss on D/L affected matches).
 
 # ## Data preparation
-# First I read the final output data into a pandas data frame and select the matches which were affected by D/L. Then I read the grounds data into another pandas data frame.
+# First I read the final output data into a pandas data frame and select the matches which were affected by D/L. Then I read the grounds data into another pandas data frame. Since D/L comes into play only in limited over games, the reference data set must only contain data about limited over games which include four categories, namely, "ODI", "LISTA", "T20I" and "T20", and leave out "TEST" and "FC".
 
 # In[1]:
 
 import pandas as pd
 dat = pd.read_csv("../data/final_output.csv")
+dat = dat[(dat[' type_of_match']!='TEST') & (dat[' type_of_match']!='FC')]
 DL = dat[dat[' duckworth_lewis']==1]
 groundsDat = pd.read_csv("../data/grounds.csv")
 
@@ -52,11 +53,12 @@ plt.show()
 
 
 # ![title](./figures/01-DL-DN.png)
-# Clearly, day & night games are affected more by D/L
+# 
+# We see that the percentage of D/L affected games that are Day and Night is slightly higher than the overall.
 # 
 # Next, I ask whether there is an advantage to the side batting first in a game affected by D/L. Typically, the target asking rate (runs per over) set for the chasing team in a D/L game is higher than that achieved by the team batting first. This raises the question as to whether the percentage of games won by the team batting first changes significantly in a D/L affected match.
 
-# In[5]:
+# In[4]:
 
 pd.options.mode.chained_assignment = None
 def BatFirstResult(df):
@@ -87,11 +89,11 @@ plt.show()
 
 # ![title](./figures/02-DL-battingFirst.png)
 # 
-# We see there is in fact a very little difference (38.66% in all games vs. 45.35% in D/L games).
+# We see there is no difference.
 # 
 # Now I focus on how the location affects the likelihood of a match being affected by D/L. Does D/L come into play at all locations (countries)?
 
-# In[6]:
+# In[5]:
 
 totalCountries = len(allMerged['country'].value_counts())
 DLcountries = len(DLmerged['country'].value_counts())
@@ -108,7 +110,7 @@ plt.show()
 # 
 # Next, I looked at how the location (country) affects the number of matches that gets affected by D/L.
 
-# In[7]:
+# In[6]:
 
 import numpy as np
 def plotCountries(df, save=0, fName="test.png"):
@@ -139,24 +141,22 @@ def plotCountries(df, save=0, fName="test.png"):
 plotCountries(DLmerged, save=1, fName="04-DL-all-countries.png")
 
 
-# ![title](./figures/04-DL-all-countries.png)
+# ![title](../figures/04-DL-all-countries.png)
 # 
 # At first look, it appears that England has the highest instances of matches being affected by D/L. However, this might simply be due to more number of matches being played in England. In other words, highest instances need not mean highest probability.
 # 
-# So we need to look at the number of matches played per country. Since D/L comes into play only in limited over games, we choose only to focus on the four categories, namely, "ODI", "LISTA", "T20I" and "T20", and leave out "TEST" and "FC".
+# So we need to look at the number of matches played per country.
 
 # In[8]:
 
-limitedDat = dat[(dat[' type_of_match']!='TEST') & (dat[' type_of_match']!='FC')]
-limMerged = mergeGrounds(limitedDat, groundsDat)
-plotCountries(limMerged,save=1, fName="05-All-countries.png")
+plotCountries(allMerged,save=1, fName="05-All-countries.png")
 
 
 # ![title](./figures/05-All-countries.png)
 # 
 # We see that the hunch was right. The higher occurrence of D/L affected matches in England was simply due to the higher number of matches being played in England. We need to look at the percentage of matches being affected by D/L instead of the number of them.
 
-# In[9]:
+# In[10]:
 
 def plotCountriesPerc(df, dfRef, save=0, fName = "test.png"):
     countries = df['country'].value_counts().sort_index()
@@ -186,26 +186,23 @@ def plotCountriesPerc(df, dfRef, save=0, fName = "test.png"):
         plt.savefig("../figures/"+fName) 
     plt.show()
 
-limMergedCountries = limMerged[limMerged['country'].isin(DLmerged['country'])]
-plotCountriesPerc(DLmerged,limMergedCountries, save=1, fName='06-DL-countries-percentage.png')
+allMergedCountries = allMerged[allMerged['country'].isin(DLmerged['country'])]
+plotCountriesPerc(DLmerged,allMergedCountries, save=1, fName='06-DL-countries-percentage.png')
 
 
 # ![title](./figures/06-DL-countries-percentage.png)
 # 
 # Now we see a totally different picture. At this point, let us focus on the countries where most games are played. Let us choose 1000 games as an arbitrary cut-off for the countries we want to include in the analysis.
 
-# In[10]:
+# In[12]:
 
-countries = limMerged['country'].value_counts()
+countries = allMerged['country'].value_counts()
 names = list(countries.index)
 topCountries = list(countries[countries > 1000].index)
-topMergedCountries = limMerged[limMerged['country'].isin(topCountries)]
+topMergedCountries = allMerged[allMerged['country'].isin(topCountries)]
 topDLcountries = DLmerged[DLmerged['country'].isin(topMergedCountries['country'])]
 plotCountriesPerc(topDLcountries, topMergedCountries, save=1, fName='07-DL-topCountries-percentage.png')
 
-
-# 
-# 
 
 # ![title](./figures/07-DL-topCountries-percentage.png)
 # 
@@ -213,7 +210,7 @@ plotCountriesPerc(topDLcountries, topMergedCountries, save=1, fName='07-DL-topCo
 # 
 # Since D/L is directly linked to the weather, there might be a correlation between the time of the year when the match is being played and the probability of the match being affected by D/L. Let us look at that.
 
-# In[11]:
+# In[13]:
 
 def plotMonths(df,save=0,fName='test.png'):
     Months = df[' date'].str.split().apply(pd.Series, 1).stack()[:,0]
@@ -229,6 +226,7 @@ def plotMonths(df,save=0,fName='test.png'):
     xVals = np.array(range(len(monthCounts)))
     plt.bar(xVals, 100.*monthCounts/np.sum(monthCounts))
     plt.xticks(xVals+0.5, names, rotation='vertical')
+    plt.ylabel("% of games affected by D/L")
     if (save):
         plt.savefig("../figures/"+fName)  
     plt.show()
@@ -242,7 +240,7 @@ plotMonths(topDLcountries, save=1, fName="08-DuckworthLewis-top-months.png")
 # 
 # But before proceeding to that, let us verify that we didn't throw out too many matches which had incorrectly formatted date.
 
-# In[12]:
+# In[14]:
 
 Months = allMerged[' date'].str.split().apply(pd.Series, 1).stack()[:,0]
 monthCounts = Months.value_counts()
@@ -250,7 +248,7 @@ print "Out of ", np.cumsum(monthCounts)[-1], " matches, month information of ", 
 print "That is ", "%.2f" % (np.cumsum(monthCounts)[11]*100./np.cumsum(monthCounts)[-1]), "% of total matches"
 
 
-# In[13]:
+# In[25]:
 
 import datetime
 def getMonthInfo(df):
@@ -286,10 +284,10 @@ def plotCountriesAndMonthsPerc(df, dfRef, save=0, fName='test.png'):
     ax.set_yticklabels(list(DLcrossTab.index))
     divider = make_axes_locatable(ax)
     cax = divider.append_axes("right", size="5%", pad=0.05)
-    plt.colorbar(mat, cax = cax)
+    plt.colorbar(mat, cax = cax, label="% of games affected by D/L")
     plt.gcf().subplots_adjust(left=0.2)
     if (save):
-        plt.savefig("../figures/"+fName)
+        plt.savefig("../figures/"+fName,bbox_inches='tight')
     plt.show()
     
 plotCountriesAndMonthsPerc(topDLcountries, topMergedCountries, save=1, fName="09-CountriesAndMonths.png")

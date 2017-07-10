@@ -1,5 +1,5 @@
 
-[Home](https://chitrakgupta.github.io)      [LinkedIn](https://www.linkedin.com/in/chitrak-gupta-5474b9115/)       [Mertz Lab, WVU](www.mertzlab-biophysics.com)     [BPS blog](https://biophysicalsociety.wordpress.com/author/chgupta/)
+[Home](https://chitrakgupta.github.io) &nbsp;&nbsp;&nbsp;&nbsp; [LinkedIn](https://www.linkedin.com/in/chitrak-gupta-5474b9115/) &nbsp;&nbsp;&nbsp;&nbsp; [Mertz Lab WVU](www.mertzlab-biophysics.com) &nbsp;&nbsp;&nbsp;&nbsp; [BPS blog](https://biophysicalsociety.wordpress.com/author/chgupta/)
 
 <img style="float: right;" src="./Chitrak_blogpic.jpg" alt="Drawing" height="200" width="200"/>
 
@@ -16,8 +16,3 @@ My PhD research involves sifting through large amounts (gigabytes) of data gener
 In this blog, I have uploaded some of the analysis that I have performed on publicly available data sets.
 
 [Cricket matches affected by Duckworth-Lewis](https://chitrakgupta.github.io/Cricket-DuckworthLewis/).
-
-
-```python
-
-```
