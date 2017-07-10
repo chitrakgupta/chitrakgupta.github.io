@@ -1,4 +1,6 @@
 
+<img style="float: right;" src="./Chitrak_blogpic.jpg" alt="Drawing" height="200" width="200"/>
+
 # About me
 
 I am a PhD candidate at the Bennett Department of Chemistry at West Virginia University (2014-present). I use computational biophysics to understand what we believe would become a next generation cancer diagnostic and therapeutic agent. [Here](http://www.mertzlab-biophysics.com) is a link to our research group led by Dr. Blake Mertz.
@@ -8,3 +10,8 @@ My PhD research involves sifting through large amounts (gigabytes) of data gener
 In this blog, I have uploaded some of the analysis that I have performed on publicly available data sets.
 
 [Cricket matches affected by Duckworth-Lewis](https://chitrakgupta.github.io/Cricket-DuckworthLewis/).
+
+
+```python
+
+```
