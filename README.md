@@ -13,14 +13,3 @@ My PhD research involves sifting through large amounts (gigabytes) of data gener
 Apart from posts on this page, I have been a guest blogger for Biophysical Society during annual meetings in 2015, 2016 and 2017. You can see my posts [here](https://biophysicalsociety.wordpress.com/author/chgupta/).
 
 <br><br>
-
-# Posts
-
-In this blog, I have uploaded some of the analysis that I have performed on publicly available data sets.
-
-[Duckworth-Lewis in limited overs cricket matches](https://chitrakgupta.github.io/Cricket-DuckworthLewis/).
-
-
-```python
-
-```
