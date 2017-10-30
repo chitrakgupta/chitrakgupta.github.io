@@ -11766,8 +11766,8 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="State-I-of-pHLIP">State I of pHLIP<a class="anchor-link" href="#State-I-of-pHLIP">&#182;</a></h2><p>While state I of pHLIP has mostly been ignored, I took a second look. This was due to two factors:</p>
-<p>(i) While conventional wisdom said pHLIP was unstructured in state II, some results showed otherwise
- (ii) Theories of peptide folding predict a equilibrium between completely coiled and partially folded states of a peptide that has a propensity to form a secondary structure.</p>
+<p>(i) While conventional wisdom said pHLIP was unstructured in state II, some results showed otherwise</p>
+<p>(ii) Theories of peptide folding predict a equilibrium between completely coiled and partially folded states of a peptide that has a propensity to form a secondary structure.</p>
 <p>This rasied the question: Is there partial secondary structure in State I?</p>
 <p>I am answering these questions by performing long timescale (~ 2 microsecond) simulation of pHLIP with selective acidic residues titrated, along with three unnatural mutants of pHLIP that were shown to have altered pH of membrane insertion. Such long timescales become feasible by using GPU-accelerated Amber simulation engine in combination with implicit solvation, which bypasses the need to explicitly define the solvent atoms thereby significantly reducing the computation time. This study has elucidated the influence of site-specific titration and mutation on the helix-forming propensity of pHLIP. Moreover, we have discovered transient sampling of the ramachandran space of pHLIP that was not known heretofore.</p>
 <p>While this is a good starting point, I eventually want to understand the interactions of pHLIP with water molecule. I am achieving this by the use of gaussian accelerated molecular dynamics (<a href="http://gamd.ucsd.edu/">GaMD</a>)</p>
