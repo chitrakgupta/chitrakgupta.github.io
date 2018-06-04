@@ -11775,10 +11775,10 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="What-are-some-of-the-things-I-need-to-know?">What are some of the things I need to know?<a class="anchor-link" href="#What-are-some-of-the-things-I-need-to-know?">&#182;</a></h4><p>For the most part, you need to work from the command line. This can be a new experience ('new' is not synonymous to 'difficult'). Here are some of the things to keep in mind.</p>
+<h3 id="What-are-some-of-the-things-I-need-to-know?">What are some of the things I need to know?<a class="anchor-link" href="#What-are-some-of-the-things-I-need-to-know?">&#182;</a></h3><p>For the most part, you need to work from the command line. This can be a new experience ('new' is not synonymous to 'difficult'). Here are some of the things to keep in mind.</p>
 <p>a. Command line is case-sensitive. If the name of your file is "My_File.txt" and you search for "my_File.txt", the file shall not be found.</p>
 <p>b. Command line is also sensitive to file location. On Windows search menu, you can search for "my file" and it will look for all files that sounds similar and find it for you. On the command line, in need to be in the correct folder (which we call "path") in order to find the file. Otherwise, even if you are searching for exactly "My_File.txt", it will be not be found.</p>
-<p>c. Command line is sensitive to spaces. In fact, space has special meanings on the command line. Thus, <strong>you are strongly recommended to avoid spaces when naming files</strong>. If you wanted to name your file "My File", maybe make it "My_File". Replace the space with underscore, or hyphen, or something else.</p>
+<p>c. Command line is sensitive to spaces. In fact, space has special meanings on the command line. Thus, <strong><font color='red'>you are strongly recommended to avoid spaces when naming files</font></strong>. If you wanted to name your file "My File", maybe make it "My_File". Replace the space with underscore, or hyphen, or something else.</p>
 <p>d. Command line has auto-completion. Until now, you might have been thinking "why on earth does anyone ever use command line"? There are many reasons, but one cool feature is the auto complete. If you are in the correct path and looking for My_File.txt, and there are no other files in that path whose name starts My, then you can just type My and hit tab. It will complete the rest of the file name.</p>
 <p>If nothing shows up, there are two possibilities:</p>
 
@@ -11787,7 +11787,7 @@ div#notebook {
 
 </code></pre>
 <p>To know which, hit tab twice. If nothing shows up, it is option 1. If it is option 2., all files starting with My will be listed.</p>
-<p>This is a great feature and <strong>you are strongly encouraged to use it</strong>. It helps you save time typing those extra characters, helps you avoid typos, and tells you instantly if the file is missing.</p>
+<p>This is a great feature and <strong><font color='red'>you are strongly encouraged to use it</font></strong>. It helps you save time typing those extra characters, helps you avoid typos, and tells you instantly if the file is missing.</p>
 <p>e. In the first few weeks, most of your errors are going to involve one or more of the points mentioned above. If namd2 crashed immediately, chances are the configuration file doesn't exist in the path where you launched namd2 from. Or, maybe you typed Namd2 instead of namd2. Or you forgot a space between namd2 and the configuration file name. Or something like that.</p>
 
 </div>
@@ -11797,7 +11797,11 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="How-do-I-get-the-command-line?">How do I get the command line?<a class="anchor-link" href="#How-do-I-get-the-command-line?">&#182;</a></h4><p>You need what we call a terminal. If using Linux or Mac, it already has a terminal installed. If using Windows, you need to install a terminal. There are more than one available for free. A common one is Putty, although I personally prefer MobaXterm.</p>
+<h3 id="What-is-all-this......CHARMM,-NAMD,-AMBER?">What is all this......CHARMM, NAMD, AMBER?<a class="anchor-link" href="#What-is-all-this......CHARMM,-NAMD,-AMBER?">&#182;</a></h3><p>If you are starting out with MD simulation, this can be confusing. More so because some of these terms are used interchangeably to mean different things. Let me explain.</p>
+<p>To run a MD simulation, you need a program that will run the simulation for you. We call this program the MD simulation engine. The engine will need a few information to run a simulation. One such information is a description of the forces acting on your system. This description is coded in a set of files known as "force field".</p>
+<p>CHARMM is a MD simulation engine. They also have their own force field. If someone says "I ran a simulation in CHARMM", they probably mean they used the CHARMM simulation engine. If someone says "I parameterized my system using CHARMM", they are talking about the force field parameters. CHARMM22, CHARMM27 and CHARMM36 are different versions of the CHARMM force field.</p>
+<p>AMBER is another MD simulation engine. And, even they have their own force field. Amber14, Amber16 and Amber18 are versions of the simulation engine. The force field can be referred to in multiple ways. For example, some papers will say they used GAFF (stands for General Amber Force Field), or ff14SB (that's the name of AMBER's protein force field).</p>
+<p>NAMD is yet another MD Simulation engine. They don't have their own force field. All NAMD tutorials use CHARMM force fields. You can, of course, use AMBER force fields to run simulations using NAMD.</p>
 
 </div>
 </div>
@@ -11806,7 +11810,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="How-do-I-create-an-account-on-Spruce?">How do I create an account on Spruce?<a class="anchor-link" href="#How-do-I-create-an-account-on-Spruce?">&#182;</a></h4><p>You need to request WVU Research Computing for an account. You can open a ticket on there helpdesk.</p>
+<h3 id="So-does-that-mean-I-can-mix-and-match-between-simulation-engine-and-force-field?">So does that mean I can mix-and-match between simulation engine and force field?<a class="anchor-link" href="#So-does-that-mean-I-can-mix-and-match-between-simulation-engine-and-force-field?">&#182;</a></h3><p>Yes, as long as you know what you are doing (in other words, consult your supervisor and/or TA if you are planning on doing this). Each force field was developed with the intention of being used in a specific way. The default MD engine has these "specific ways" built into them. When doing a mix-and-match, you need to make sure the force field is being used in the correct way.</p>
+<p>But in principle, yes. You can parameterize something in CHARMM and run it in AMBER or parameterize something in AMBER and run it in NAMD.</p>
 
 </div>
 </div>
@@ -11815,7 +11820,36 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="How-do-I-login-to-Spruce?">How do I login to Spruce?<a class="anchor-link" href="#How-do-I-login-to-Spruce?">&#182;</a></h4><p>Your account ID has two parts:</p>
+<h3 id="Wait,-you-didn't-talk-about-VMD">Wait, you didn't talk about VMD<a class="anchor-link" href="#Wait,-you-didn't-talk-about-VMD">&#182;</a></h3><p>Ah yes. VMD is a visualization and analysis tool. It is developed by the same people as NAMD, but it is not related to NAMD in any way. VMD can help you prepare your files before you run a simulation, and lets you visualize your trajectory after the simulation is done. You can also analyze your simulation in VMD. Some analysis tools are built-in (like RMSD), you can also design your own analysis through their Tcl interface.</p>
+<p>VMD is by no means the only analysis tool. Another example is cpptraj, developed by the AMBER developers. Mix-and-match is a lot easier for analysis tools. You can easily run a simulation in AMBER and analyze them in VMD.</p>
+<p>Also, if you are doing a lot of trajectory manipulation (centering, aligning, clustering, etc.) and/or doing a lot of lipid simulation, <a href="http://loos.sourceforge.net/">LOOS</a> can be a very useful tool.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-do-I-get-the-command-line?">How do I get the command line?<a class="anchor-link" href="#How-do-I-get-the-command-line?">&#182;</a></h3><p>You need what we call a terminal. If using Linux or Mac, it already has a terminal installed. If using Windows, you need to install a terminal. There are more than one available for free. A common one is Putty, although I personally prefer MobaXterm.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-do-I-create-an-account-on-Spruce?">How do I create an account on Spruce?<a class="anchor-link" href="#How-do-I-create-an-account-on-Spruce?">&#182;</a></h3><p>You need to request WVU Research Computing for an account. You can open a ticket on there helpdesk.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-do-I-login-to-Spruce?">How do I login to Spruce?<a class="anchor-link" href="#How-do-I-login-to-Spruce?">&#182;</a></h3><p>Your account ID has two parts:</p>
 
 <pre><code>      1. Your id (usually your MIX id)
       2. The host name, which in the case of spruce is spruce.hpc.wvu.edu
@@ -11823,7 +11857,7 @@ div#notebook {
 </code></pre>
 <p>On Linux and Mac, open up a terminal and type the following:
          ssh username@hostname</p>
-<p>Your password is your MIX password. Note that you cannot see your password while it is being typed, <strong>not even the asterisk</strong>.</p>
+<p>Your password is your MIX password. Note that you cannot see your password while it is being typed, <strong><font color='red'>not even the asterisk</font></strong>.</p>
 <p>On Windows, you need to setup Putty (or whatever terminal you are using). Create a new session, and put the necessary details. The password is your MIX password</p>
 
 </div>
@@ -11833,7 +11867,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="How-do-I-copy-files-to-and-from-Spruce?">How do I copy files to and from Spruce?<a class="anchor-link" href="#How-do-I-copy-files-to-and-from-Spruce?">&#182;</a></h4><p>On Linux and Mac (and also Windows if using Mobaterm), you can either use scp or rsync from the terminal. The latter is almost always the better choice unless you are copying just one file.</p>
+<h3 id="How-do-I-copy-files-to-and-from-Spruce?">How do I copy files to and from Spruce?<a class="anchor-link" href="#How-do-I-copy-files-to-and-from-Spruce?">&#182;</a></h3><p>On Linux and Mac (and also Windows if using Mobaterm), you can either use scp or rsync from the terminal. The latter is almost always the better choice unless you are copying just one file.</p>
 <p>The format always is the following:<br></p>
 <ul>
 <li>rsync source destination</li>
@@ -11856,7 +11890,7 @@ div#notebook {
 <ul>
 <li>echo $HOME</li>
 </ul>
-<p>Home folder has limited memory, and is usually meant for keeping small files that you need to use often (you might not have any such file). <strong> NEVER RUN SIMULATIONS FROM THE HOME FOLDER</strong>. Simulations generate huge data files and can potentially crash Spruce.</p>
+<p>Home folder has limited memory, and is usually meant for keeping small files that you need to use often (you might not have any such file). <strong><font color='red'>NEVER RUN SIMULATIONS FROM THE HOME FOLDER</font></strong>. Simulations generate huge data files and can potentially crash Spruce.</p>
 <p>This brings us to the scratch folder. The path is usually /scratch/username. Again, you can always see it by typing the following on Spruce:<br></p>
 <ul>
 <li>echo $SCRATCH</li>
@@ -11870,7 +11904,69 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="How-do-I-run-simulations-on-Spruce?">How do I run simulations on Spruce?<a class="anchor-link" href="#How-do-I-run-simulations-on-Spruce?">&#182;</a></h4>
+<h3 id="How-do-I-run-simulations-on-Spruce?">How do I run simulations on Spruce?<a class="anchor-link" href="#How-do-I-run-simulations-on-Spruce?">&#182;</a></h3><p>Spruce runs jobs through a queueing system. On spruce, you never directly excecute the namd2 command like you do on your laptop. Instead, you submit a request for namd2 to be ran. This is done through a submission script, which you need to obtain from your supervisor/TA (I will try and find a way to upload it here in future). In that script, you will need to change the following:</p>
+<ol>
+<li><p>Job Name: This is optional, more for your record. Give a name for your job (do not use spaces).</p>
+</li>
+<li><p>yourEmail: Put your email. You will get an email when the job begins, ends or aborts. You can also change the conditions for receiving email (like, you can make it 'send email only when job ends' or 'send email only when job begins or aborts').</p>
+</li>
+<li><p>Queue name: There are more than one queues on Spruce. Read the posts below to understand which queue is ideal for you. Click <a href="https://wiki.hpc.wvu.edu/hpc_wiki/index.php/Spruce_Batch_Queues">here</a> to see a list of all the queues on Spruce. Note that you might not be elligible to run jobs on each and every one of them.</p>
+</li>
+<li><p>nodes;ppn: These denote how many nodes you are requesting, and how many processes you want to run per node. Usually you won't need to change the ppn. Currently it is set at 16, your supervisor will tell you if that ever changes. To understand how to set the number of nodes, read the posts below.</p>
+</li>
+<li><p>walltime. This denots how much time you are requesting. To know how long your job is expected to take, read the posts below.</p>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="What-are-steps-I-need-to-follow-to-run-simulations-on-Spruce?">What are steps I need to follow to run simulations on Spruce?<a class="anchor-link" href="#What-are-steps-I-need-to-follow-to-run-simulations-on-Spruce?">&#182;</a></h3><p>I will describe the most formal way of setting up and benchmarking your job. If you are running a relatively short job, you might be able to bypass the benchmarking steps from steps 6 through ??. <strong>&lt;font = 'red'&gt;Consult your supervisor if you are planning on skipping those steps&lt;/font&gt;</strong>.<br></p>
+<ol>
+<li><p>Transfer all your files to Spruce (scratch folder). It is a good practice to create separate folders for each of your simulations.<br></p>
+</li>
+<li><p>Obtain the submission script, put your email and job name.<br></p>
+</li>
+<li><p>Run a "debug" job. This is primarily to make sure you have transferred all your files, and to the correct location (trust me, you will make mistakes here). The "real" jobs have very long wait times. The last thing you want is wait 24 hours for your job to start, then realize one file was missing!<br></p>
+</li>
+<li><p>To do this, put "debug" as your queue. Put a walltime of ~ 5 mins (000:05:00). Puts nodes=1. This means, you are requesting 1 node for 5 mins. Run the job using the following command from the command line:</p>
+<ul>
+<li>qsub filename.sh</li>
+</ul>
+<p>where filename.sh is the name of the submission script<br></p>
+</li>
+<li><p>Of course, your job won't finish in 5 mins. But if you see it is running normally, that means you are good. If not, you need to fix what is wrong.<br></p>
+</li>
+<li><p>Now you need to figure out how many nodes you need. If you request too few nodes (like 1 node), your job will take very long to finish. If, however, you ask for too many nodes, you will be wasting computational time. This is because there is a limit to how much faster your job can run by parallelization. Beyond that, you are using resource but that isn't helping.<br></p>
+</li>
+<li><p>Now, when you ran the original "debug" job, you had generated a log file (if you deleted it, just run it again). From the command line, type this:</p>
+<ul>
+<li>grep Benchmark filename.log</li>
+</ul>
+<p>where "filename.log" is the name of your log file. This will find lines containing the word "Benchmark" from the file and display on the screen. Look for the number before "days/ns". That's how fast your job was running on 1 node.<br></p>
+</li>
+<li><p>Note this number somewhere. Ideally, rename the log file (use the 'cp' command for this) so that it doesn't get overwritten.<br></p>
+</li>
+<li><p>Now, put "nodes=2" in your submission script. Don't change anything else. Submit the job again. <strong><font color='red'>Note that all files will be overwritten</font></strong>.<br></p>
+</li>
+<li><p>From the new log file, get the benchmark times.<br></p>
+</li>
+<li><p>Repeat for nodes=4, 6, etc. You might not have to go beyond that. When using more than 2 nodes, you might have to put "standby" as your queue (no longer "debug").<br></p>
+</li>
+<li><p>Plot the performance (in ns/day, not days/ns) as a function of number of nodes. You will get a good idea when your performance is beginning to fall off.<br></p>
+</li>
+<li><p>Now you know the optimal number of nodes for your job. From the benchmark time, you also now how long your job is expected to take (to be on the safer side, request slightly longer time. For example, if the job is expected to take 20.48 hours, maybe request 22 hours).<br></p>
+</li>
+<li><p>Now you need to decide on the queue. The community queues have a walltime limit. Click <a href="https://wiki.hpc.wvu.edu/hpc_wiki/index.php/Spruce_Batch_Queues">here</a> to see the wall time limit on each queue (the community queues are 'debug', 'standby', comm_mmem_day' and 'comm_mmem_week'). If you are a part of the Mertz group, you might have access to the jbmertz queue.</p>
+</li>
+<li><p>Congratulations! You are now the local expert on "How to run MD simulation on Spruce".</p>
+</li>
+</ol>
+
 </div>
 </div>
 </div>
