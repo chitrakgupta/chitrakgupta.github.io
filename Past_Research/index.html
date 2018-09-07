@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>Research</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Past Research</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="https://www.w3schools.com/lib/w3data.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style type="text/css">
     /*!
@@ -11768,14 +11770,20 @@ div#notebook {
     </script>
     <!-- End of mathjax configuration --></head>
 <body>
-  <div tabindex="-1" id="notebook" class="border-box-sizing">
+
+<div w3-include-html="Header.html"></div> 
+<script>
+w3IncludeHTML();
+</script>
+
+  <div tabindex="-1" id="notebook" class="border-box-sizing" style="padding-top:20px">
     <div class="container" id="notebook-container">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://chitrakgupta.github.io">Home</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.linkedin.com/in/chitrak-gupta-5474b9115/">LinkedIn</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://chitrakgupta.github.io/Research/">Research</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://chitrakgupta.github.io/Publications/">Publications</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="http://www.mertzlab-biophysics.com">Mertz Lab</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="http://chitrakgupta.github.io/Volunteering/">Volunteering</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://chitrakgupta.github.io/BPSblog/">BPS blog</a></p>
+
 <h1 id="Molecular-simulation-of-pH-(Low)-Insertion-Peptide-pHLIP">Molecular simulation of pH (Low) Insertion Peptide pHLIP<a class="anchor-link" href="#Molecular-simulation-of-pH-(Low)-Insertion-Peptide-pHLIP">&#182;</a></h1><h2 id="The-bigger-picture">The bigger picture<a class="anchor-link" href="#The-bigger-picture">&#182;</a></h2><p>A major challenge in cancer treatment is off-target side effects, where the cancer drug attacks the healthy cells in addition to the cancerous ones. Distinguising cancerous tumors is made even harder by the heterogeneity of these tumors and rapid mutations that lead to drug resistance. A potential solution is to exploit the properties of tumor microenvironment that is universal of all cancer cells. One such property is the extracellular pH,  which is lower in tumor cells (~ 6.8) than healthy tissues (~ 7.2).</p>
 <p><img src="./Fig1a_cropped.png" align="left" height="200" width="200" style="display:inline;margin-right:20px; margin-bottom:20px;"/></p>
 <p>A peptide derived from the helix C of bacteriorhodopsin (see figure on left) has exactly this property, and has been named pH (Low) Insertion Peptide, pHLIP. This peptide is soluble and unstructured in solution (State I, see figure below) and binds to surface of lipid membranes under neutral and alkaline pH (State II, see figure below). However, once the pH drops to acidic level, pHLIP spontaneously forms a transmembrane helix. This property makes pHLIP a great candidate for cancer diagnostic and therapeutic. However, pHLIP insertion happens at a pH ( ~ 6.2) that is much lower than the pH of most cancerous tumors. Thus, modifications to the pHLIP sequence are necessary to develop pHLIP into a novel cancer-targeting agent. Such modifications require a detailed understanding of the properties of pHLIP at a molecular level. This is the focus of my PhD research.</p>
