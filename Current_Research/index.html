@@ -11770,20 +11770,38 @@ div#notebook {
     </script>
     <!-- End of mathjax configuration --></head>
 <body>
+
 <div w3-include-html="Header.html"></div> 
 <script>
 w3IncludeHTML();
 </script>
 
-  <div tabindex="-1" id="notebook" class="border-box-sizing" style="padding-top:20px">
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Chemomechanical-coupling-of-Complex-I">Chemomechanical coupling of Complex I<a class="anchor-link" href="#Chemomechanical-coupling-of-Complex-I">&#182;</a></h1><p>Efficient harvesting of solar energy will have far-reaching impact towards current energy needs. This makes bioenergetics the focus of modern energy research. Particularly, mitochondrial bioenergetics is receiving more importance than ever before. Mitochondria are the power-plant of most eukaryotic cells which employ electrons from NADH to synthesize ATP. The long-range goal of my research is to understand the mechanism of action of the respirasome consisting of membrane-embedded enzymes, named Complex I, III, IV and V. Recent discovery of the atomic model of Complex I, the first and the largest protein complex in the mitochondrial respiratory chain, has provided a fantastic opportunity for such study. My current focus is on the chemomechanical coupling in Complex I, where electrons from NADH are utilized to reduce quinone while pumping protons across the membrane.</p>
+<p><img src="./Respirasome.png" align="left" style="display:inline;margin-right:20px; margin-bottom:20px;"/></p>
+<p>Complex I is an L-shaped protein where one of the arms is soluble and the other is transmembrane. The transmembrane domain is responsible for pumping protons across the membrane. The soluble domain houses the binding site for NADH as well as quinone. However, these two sites are far from each other. This raises the obvious question, how does the electrons from NADH reach the quinone? Other related questions are, how is the quinone traffick and the quinone-binding site influenced by presence of electrons (from NADH)? Many of the answers are tied to chemomechanical coupling: mechanical motion of protein domains arising out of chemical phenomenon (electron uptake). I am using large-scale MD simulation to understand the reduction-induced chemomechanical coupling in the soluble domain of Complex I.</p>
 
-<h1 id="This-page-is-currently-in-construction">This page is currently in construction<a class="anchor-link" href="#This-page-is-currently-in-construction">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="De-novo-protein-folding-from-cryo-EM-data">De novo protein folding from cryo EM data<a class="anchor-link" href="#De-novo-protein-folding-from-cryo-EM-data">&#182;</a></h1><p>Multiple approaches exist for hybrid modeling, which combine MD simulation with experimental methods like NMR, X-ray crystallography and cryo EM data. Each approach uses molecular replacement, where an initial search model is fitted to the experimental data. This has two consequences:</p>
+<ol>
+<li>Quality of fit is biased by initial choice.</li>
+<li>Cannot be used where a search model is not available.</li>
+</ol>
+<p>To overcome these problems, we are developing a a protein modeling pipeline that interactively combines a minimam spanning tree based backbone tracing tool (MAINMAST), a bayesian-likelihood based protein-folding method (MELD), and a molecular dynamics fitting protocol (ReMDFF). Primary sequence information and cryo EM images are the only input required, and images with resolution of as low as 5 angstrom are sufficient to get a structural model.</p>
+<p>To make it easier to use, I am developing a GUI for this pipeline. I am using python's Kivy framework as well as kivy language for this purpose. Once ready, the protocol is expected to significantly push the boundaries of de novo protein folding.</p>
+
 </div>
 </div>
 </div>
